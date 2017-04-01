@@ -1,0 +1,15 @@
+{
+  "name": "pimp-my-wallpaper",
+  "version": "1.0.0",
+  "description": "pimp your wallpaper",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "berkin",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "redux": "^3.6.0"
+  }
+}
