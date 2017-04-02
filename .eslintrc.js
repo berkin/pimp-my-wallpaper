@@ -14,6 +14,7 @@ module.exports = {
 		"jest": true
 	},
 	"rules": {
+		"semi": [2, "never"],
 		"compat/compat": 2
 	},
 	"plugins": [

@@ -2,16 +2,20 @@
   "name": "pimp-my-wallpaper",
   "version": "1.0.0",
   "description": "pimp your wallpaper",
-  "browserslist": ["> 1%"],
+  "browserslist": [
+    "> 1%"
+  ],
   "scripts": {
     "start": "babel-node src",
     "test": "eslint src",
-	"precommit": "yarn test",
-	"prepush": "yarn push"
+    "precommit": "yarn test",
+    "prepush": "yarn push"
   },
   "author": "berkin",
   "license": "MIT",
   "dependencies": {
+    "compression": "^1.6.2",
+    "express": "^4.15.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "redux": "^3.6.0"
