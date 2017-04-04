@@ -1,4 +1,5 @@
-import { STATIC_PATH } from '../shared/config'
+import { STATIC_PATH, APP_CONTAINER_CLASS, WDS_PORT } from '../shared/config'
+import { isProd } from '../shared/util'
 
 const renderApp = title =>
 `<!doctype html>
@@ -8,7 +9,8 @@ const renderApp = title =>
     <link rel="stylesheet" href="${STATIC_PATH}/css/style.css">
   </head>
   <body>
-    <h1>${title}</h1>
+    <div class="${APP_CONTAINER_CLASS}"><h1>${title}</h1></div>
+    <script src="${isProd ? STATIC_PATH : `//localhost:${WDS_PORT}/dist`}/js/bundle.js"></script>
   </body>
 </html>
 `
