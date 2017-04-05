@@ -6,10 +6,10 @@
     "> 1%"
   ],
   "scripts": {
-    "start": "npm-run-all -p dev:start dev:wds",
+    "start": "npm-run-all -p dev:*",
     "dev:start": "nodemon --ignore lib --exec babel-node src/server",
     "dev:wds": "webpack-dev-server --progress",
-    "prod:build": "rimraf lib && babel src -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
+    "prod:build": "rimraf lib && babel src -d lib --ignore .test.js && && cross-env NODE_ENV=production webpack -p --progress",
     "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
     "prod:stop": "pm2 delete server",
     "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
@@ -26,6 +26,7 @@
     "path": "^0.12.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-hot-loader": "next",
     "redux": "^3.6.0"
   },
   "devDependencies": {
@@ -33,7 +34,9 @@
     "babel-core": "^6.24.0",
     "babel-jest": "^19.0.0",
     "babel-loader": "^6.4.1",
+    "babel-plugin-flow-react-proptypes": "^0.21.0",
     "babel-preset-env": "^1.3.2",
+    "babel-preset-react": "^6.23.0",
     "cross-env": "^4.0.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
