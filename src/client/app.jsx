@@ -1,7 +1,4 @@
 import React from 'react'
-import Redux from 'redux'
-
-import job from './reducer/job'
 
 const App = () => (
 	<div>
