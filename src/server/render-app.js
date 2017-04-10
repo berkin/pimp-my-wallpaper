@@ -4,14 +4,16 @@ import { isProd } from '../shared/util'
 const renderApp = title =>
 `<!doctype html>
 <html>
-  <head>
-    <title>${title}</title>
-    <link rel="stylesheet" href="${STATIC_PATH}/css/style.css">
-  </head>
-  <body>
-    <div class="${APP_CONTAINER_CLASS}"></div>
-    <script src="${isProd ? STATIC_PATH : `//localhost:${WDS_PORT}/dist`}/js/bundle.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8">
+		<title>${title}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="//localhost:${WDS_PORT}/${STATIC_PATH}/css/style.css">
+	</head>
+	<body>
+		<div class="${APP_CONTAINER_CLASS}"></div>
+		<script src="${isProd ? STATIC_PATH : `//localhost:${WDS_PORT}/dist`}/js/bundle.js"></script>
+	</body>
 </html>
 `
 
