@@ -1,26 +1,23 @@
-const jobs = (state = [], action) => {
+const job = (state, action) => {
 	switch (action.type) {
 	case 'ADD_JOB':
-		return [
-			...state,
-			{
-				title: action.title,
-			},
-		]
+		return {
+			id: action.id,
+			title: action.title,
+			active: true,
+		}
 	case 'TOGGLE_JOB':
-		return state.map((job) => {
-			if (job.id !== action.id) {
-				return job
-			}
+		if (state.id !== action.id) {
+			return state
+		}
 
-			return {
-				...job,
-				active: !job.active,
-			}
-		})
+		return {
+			...state,
+			active: !state.active,
+		}
 	default:
 		return state
 	}
 }
 
-export default jobs
+export default job

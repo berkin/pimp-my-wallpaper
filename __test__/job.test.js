@@ -1,14 +1,17 @@
-import jobs from '../src/client/reducer/job'
+import jobs from '../src/client/reducer/jobs'
 
 test('ADD_JOB', () => {
 	const stateBefore = []
 	const action = {
+		id: 0,
 		type: 'ADD_JOB',
 		title: 'foo',
 	}
 
 	const stateAfter = [{
+		id: 0,
 		title: 'foo',
+		active: true,
 	}]
 	expect(jobs(stateBefore, action)).toEqual(stateAfter)
 })
