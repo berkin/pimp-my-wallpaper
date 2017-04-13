@@ -40,11 +40,7 @@ App.defaultProps = {
 }
 
 App.propTypes = {
-	jobs: React.PropTypes.shape({
-		id: React.PropTypes.number,
-		title: React.PropTypes.string,
-		active: React.PropTypes.string
-	}),
+	jobs: React.PropTypes.arrayOf(React.PropTypes.Object),
 }
 
 export default App
