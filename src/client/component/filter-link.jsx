@@ -24,11 +24,13 @@ const FilterLink = ({
 
 FilterLink.defaultProps = {
 	filter: 'SHOW_ALL',
+	children: null,
+	currentFilter: 'SHOW_ALL'
 }
 
 FilterLink.propTypes = {
 	filter: React.PropTypes.string,
 	currentFilter: React.PropTypes.string,
-	children: React.PropTypes.any,
+	children: React.PropTypes.node,
 }
 export default FilterLink

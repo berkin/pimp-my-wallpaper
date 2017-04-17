@@ -1,5 +1,6 @@
 import React from 'react'
 import store from './store/app'
+import JobList from './component/job-list'
 import FilterLink from './component/filter-link'
 
 let id = 0
@@ -7,9 +8,8 @@ class App extends React.Component {
 	render() {
 		const {
 			jobs,
-			visibilityFilter
+			visibilityFilter,
 		} = this.props
-
 
 		const visibleJobs = jobs.filter((item) => {
 			switch (visibilityFilter) {
@@ -25,25 +25,15 @@ class App extends React.Component {
 		return (
 			<div>
 				<h1>Jobs</h1>
-				<ul>
-					{visibleJobs.map(job =>
-						<li
-							className={job.active ? 'active' : 'passive'}
-							role="button"
-							key={job.id}
-							onClick={() => {
-								store.dispatch({
-									id: job.id,
-									type: 'TOGGLE_JOB'
-								})
-							}
-							}
-						>
-							{job.title}
-						</li>
-					)
-				}
-				</ul>
+				<JobList
+					jobs={visibleJobs}
+					onJobClick={(jobId) => {
+						store.dispatch({
+							type: 'TOGGLE_JOB',
+							id: jobId
+						})
+					}}
+				/>
 				<input type="text" ref={(node) => { this.input = node }} />
 				<button
 					onClick={() => {
@@ -86,10 +76,12 @@ class App extends React.Component {
 
 App.defaultProps = {
 	jobs: [],
+	visibilityFilter: 'SHOW_ALL',
 }
 
 App.propTypes = {
 	jobs: React.PropTypes.arrayOf(React.PropTypes.object),
+	visibilityFilter: React.PropTypes.oneOf(['SHOW_ALL', 'SHOW_ACTIVE', 'SHOW_PASSIVE']),
 }
 
 export default App
