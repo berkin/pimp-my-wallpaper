@@ -14,7 +14,7 @@ const rootEl = document.querySelector(APP_CONTAINER_SELECTOR)
 const wrapApp = AppComponent =>
 	<AppContainer>
 		<AppComponent
-			jobs={store.getState().jobs}
+			{...store.getState()}
 		/>
 	</AppContainer>
 
