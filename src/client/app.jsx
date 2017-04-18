@@ -1,7 +1,8 @@
 import React from 'react'
 import store from './store/app'
 import JobList from './component/job-list'
-import FilterLink from './component/filter-link'
+import AddJob from './component/add-job'
+import FilterBar from './component/filter-bar'
 
 let id = 0
 class App extends React.Component {
@@ -27,48 +28,31 @@ class App extends React.Component {
 				<h1>Jobs</h1>
 				<JobList
 					jobs={visibleJobs}
-					onJobClick={(jobId) => {
+					onJobClick={jobId =>
 						store.dispatch({
 							type: 'TOGGLE_JOB',
 							id: jobId
 						})
-					}}
-				/>
-				<input type="text" ref={(node) => { this.input = node }} />
-				<button
-					onClick={() => {
-						id += 1
-						store.dispatch({
-							id,
-							type: 'ADD_JOB',
-							title: this.input.value,
-						})
-						this.input.value = ''
 					}
-				}
-				>
-				Add Job
-				</button>
-				<div>
-					Show:
-					{' '}
-					<FilterLink
-						filter="SHOW_ALL"
-						currentFilter={visibilityFilter}
-					>All</FilterLink>
-					{', '}
-					<FilterLink
-						filter="SHOW_ACTIVE"
-						currentFilter={visibilityFilter}
-					>
-					Active
-					</FilterLink>
-					{', '}
-					<FilterLink
-						filter="SHOW_PASSIVE"
-						currentFilter={visibilityFilter}
-					>Passive</FilterLink>
-				</div>
+				/>
+				<AddJob
+					onAddClick={title =>
+						store.dispatch({
+							id: (id += 1),
+							type: 'ADD_JOB',
+							title
+						})
+					}
+				/>
+				<FilterBar
+					visibilityFilter={visibilityFilter}
+					onFilterClick={(filter) =>
+						store.dispatch({
+							type: 'SET_VISIBILITY_FILTER',
+							filter
+						})
+					}
+				/>
 			</div>
 		)
 	}
