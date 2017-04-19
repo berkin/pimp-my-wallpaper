@@ -1,32 +1,27 @@
 import React from 'react'
-import FilterLink from './filter-link'
+import FilterLink from '../container/filter-link'
 
-const FilterBar = ({
-	visibilityFilter,
-	onFilterClick,
-}) =>
+const FilterBar = () =>
 	<div>
 		Show:
 		{' '}
 		<FilterLink
 			filter="SHOW_ALL"
-			currentFilter={visibilityFilter}
-			onFilterClick={onFilterClick}
-		>All</FilterLink>
+		>
+			All
+		</FilterLink>
 		{', '}
 		<FilterLink
 			filter="SHOW_ACTIVE"
-			currentFilter={visibilityFilter}
-			onFilterClick={onFilterClick}
 		>
-		Active
+			Active
 		</FilterLink>
 		{', '}
 		<FilterLink
 			filter="SHOW_PASSIVE"
-			currentFilter={visibilityFilter}
-			onFilterClick={onFilterClick}
-		>Passive</FilterLink>
+		>
+			Passive
+		</FilterLink>
 	</div>
 
 export default FilterBar
