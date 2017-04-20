@@ -12,6 +12,7 @@ class FilterLink extends React.Component {
 	componentWillUnmount() {
 		this.unsubscribe()
 	}
+
 	render() {
 		const state = store.getState()
 		return (

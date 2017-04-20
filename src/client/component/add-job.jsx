@@ -1,15 +1,20 @@
 import React from 'react'
+import store from '../store/app'
 
-const AddJob = ({
-	onAddClick
-}) => {
+const AddJob = () => {
 	let input
+	let id = 0
+
 	return (
 		<div>
 			<input type="text" ref={(node) => { input = node }} />
 			<button
 				onClick={() => {
-					onAddClick(input.value)
+					store.dispatch({
+						id: (id += 1),
+						type: 'ADD_JOB',
+						title: input.value
+					})
 					input.value = ''
 				}
 				}
