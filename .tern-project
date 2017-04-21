@@ -4,8 +4,8 @@
     "browser"
   ],
   "loadEagerly": [
-    "./src/**/*.js",
-	"./src/**/*.jsx"
+    "src/**/*.js",
+	"src/**/*.jsx"
   ],
   "dontLoad": [
     "node_modules/**",
