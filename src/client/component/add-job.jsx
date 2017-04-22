@@ -1,7 +1,6 @@
 import React from 'react'
-import store from '../store/app'
 
-const AddJob = () => {
+const AddJob = (pros, { store }) => {
 	let input
 	let id = 0
 
@@ -23,6 +22,10 @@ const AddJob = () => {
 		</button>
 		</div>
 	)
+}
+
+AddJob.contextTypes = {
+	store: React.PropTypes.object
 }
 
 export default AddJob

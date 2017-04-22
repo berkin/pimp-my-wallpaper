@@ -1,9 +1,9 @@
 import React from 'react'
 import Link from '../component/link'
-import store from '../store/app'
 
 class FilterLink extends React.Component {
 	componentDidMount() {
+		const { store } = this.context
 		this.unsubscribe = store.subscribe(() =>
 			this.forceUpdate()
 		)
@@ -14,6 +14,7 @@ class FilterLink extends React.Component {
 	}
 
 	render() {
+		const { store } = this.context
 		const state = store.getState()
 		return (
 			<Link
@@ -29,6 +30,10 @@ class FilterLink extends React.Component {
 			</Link>
 		)
 	}
+}
+
+FilterLink.contextTypes = {
+	store: React.PropTypes.object,
 }
 
 export default FilterLink

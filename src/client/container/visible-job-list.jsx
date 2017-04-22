@@ -1,8 +1,7 @@
 import React from 'react'
-import store from '../store/app'
 import JobList from '../component/job-list'
 
-const getVisibleJobList = () => {
+const getVisibleJobList = (store) => {
 	const state = store.getState()
 	switch (state.visibilityFilter) {
 	case 'SHOW_ACTIVE':
@@ -17,6 +16,7 @@ const getVisibleJobList = () => {
 class VisibleJobList extends React.Component {
 
 	componentDidMount() {
+		const { store } = this.context
 		this.unsubscribe = store.subscribe(() =>
 			this.forceUpdate()
 		)
@@ -27,9 +27,10 @@ class VisibleJobList extends React.Component {
 	}
 
 	render() {
+		const { store } = this.context
 		return (
 			<JobList
-				jobs={getVisibleJobList()}
+				jobs={getVisibleJobList(store)}
 				onJobClick={jobId =>
 					store.dispatch({
 						type: 'TOGGLE_JOB',
@@ -39,6 +40,10 @@ class VisibleJobList extends React.Component {
 			/>
 		)
 	}
+}
+
+VisibleJobList.contextTypes = {
+	store: React.PropTypes.object,
 }
 
 export default VisibleJobList
