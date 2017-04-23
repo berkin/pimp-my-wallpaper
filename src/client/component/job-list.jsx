@@ -22,4 +22,5 @@ JobList.propTypes = {
 	jobs: React.PropTypes.array.isRequired,
 	onJobClick: React.PropTypes.func.isRequired,
 }
+
 export default JobList

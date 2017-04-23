@@ -1,49 +1,38 @@
-import React from 'react'
+import { connect } from 'react-redux'
 import JobList from '../component/job-list'
 
-const getVisibleJobList = (store) => {
-	const state = store.getState()
-	switch (state.visibilityFilter) {
+const getVisibleJobList = (
+	jobs,
+	visibilityFilter
+) => {
+	switch (visibilityFilter) {
 	case 'SHOW_ACTIVE':
-		return state.jobs.filter(item => item.active)
+		return jobs.filter(item => item.active)
 	case 'SHOW_PASSIVE':
-		return state.jobs.filter(item => !item.active)
+		return jobs.filter(item => !item.active)
 	default:
-		return state.jobs
+		return jobs
 	}
 }
 
-class VisibleJobList extends React.Component {
+const mapStateToProps = state => ({
+	jobs: getVisibleJobList(
+		state.jobs,
+		state.visibilityFilter,
+	)
+})
 
-	componentDidMount() {
-		const { store } = this.context
-		this.unsubscribe = store.subscribe(() =>
-			this.forceUpdate()
-		)
-	}
+const mapDispatchToProps = dispatch => ({
+	onJobClick: jobId =>
+		dispatch({
+			type: 'TOGGLE_JOB',
+			id: jobId
+		})
+})
 
-	componentWillUnmount() {
-		this.unsubscribe()
-	}
-
-	render() {
-		const { store } = this.context
-		return (
-			<JobList
-				jobs={getVisibleJobList(store)}
-				onJobClick={jobId =>
-					store.dispatch({
-						type: 'TOGGLE_JOB',
-						id: jobId
-					})
-				}
-			/>
-		)
-	}
-}
-
-VisibleJobList.contextTypes = {
-	store: React.PropTypes.object,
-}
+const VisibleJobList = connect(
+	mapStateToProps,
+	mapDispatchToProps,
+)(JobList)
 
 export default VisibleJobList

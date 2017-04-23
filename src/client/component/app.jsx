@@ -1,6 +1,6 @@
 import React from 'react'
 import VisibleJobList from '../container/visible-job-list'
-import AddJob from './add-job'
+import AddJob from '../container/add-job'
 import FilterBar from './filter-bar'
 
 const App = () =>

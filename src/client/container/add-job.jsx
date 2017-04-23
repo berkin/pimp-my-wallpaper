@@ -1,6 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const AddJob = (pros, { store }) => {
+let AddJob = ({ dispatch }) => {
 	let input
 	let id = 0
 
@@ -9,7 +10,7 @@ const AddJob = (pros, { store }) => {
 			<input type="text" ref={(node) => { input = node }} />
 			<button
 				onClick={() => {
-					store.dispatch({
+					dispatch({
 						id: (id += 1),
 						type: 'ADD_JOB',
 						title: input.value
@@ -19,13 +20,11 @@ const AddJob = (pros, { store }) => {
 				}
 			>
 			Add Job
-		</button>
+			</button>
 		</div>
 	)
 }
 
-AddJob.contextTypes = {
-	store: React.PropTypes.object
-}
+AddJob = connect()(AddJob)
 
 export default AddJob
