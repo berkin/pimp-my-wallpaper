@@ -1,20 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import addJob from '../action/addJob'
 
-let AddJob = ({ dispatch }) => {
+const AddJobComponent = ({ dispatch }) => {
 	let input
-	let id = 0
 
 	return (
 		<div>
 			<input type="text" ref={(node) => { input = node }} />
 			<button
 				onClick={() => {
-					dispatch({
-						id: (id += 1),
-						type: 'ADD_JOB',
-						title: input.value
-					})
+					dispatch(addJob(input.value))
 					input.value = ''
 				}
 				}
@@ -25,6 +21,6 @@ let AddJob = ({ dispatch }) => {
 	)
 }
 
-AddJob = connect()(AddJob)
+const AddJob = connect()(AddJobComponent)
 
 export default AddJob

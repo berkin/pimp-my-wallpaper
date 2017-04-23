@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import JobList from '../component/job-list'
+import toggleJob from '../action/toggleJob'
 
 const getVisibleJobList = (
 	jobs,
@@ -24,10 +25,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	onJobClick: jobId =>
-		dispatch({
-			type: 'TOGGLE_JOB',
-			id: jobId
-		})
+		dispatch(
+			toggleJob(jobId)
+		)
 })
 
 const VisibleJobList = connect(
