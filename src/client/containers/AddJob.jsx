@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import addJob from '../action/addJob'
+import { addJob } from '../actions'
 
 const AddJobComponent = ({ dispatch }) => {
 	let input

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import JobList from '../component/job-list'
-import toggleJob from '../action/toggleJob'
+import JobList from '../components/JobList'
+import { toggleJob } from '../actions'
 
 const getVisibleJobList = (
 	jobs,

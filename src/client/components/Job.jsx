@@ -1,9 +1,10 @@
 import React from 'react'
+import { PropTypes } from 'prop-types'
 
 const Job = ({
-	onClick,
 	title,
-	active
+	active,
+	onClick,
 }) =>
 	<li
 		role="menuitemcheckbox"
@@ -15,5 +16,10 @@ const Job = ({
 		{title}
 	</li>
 
+Job.propTypes = {
+	onClick: PropTypes.func.isRequired,
+	title: PropTypes.string.isRequired,
+	active: PropTypes.bool.isRequired,
+}
 
 export default Job

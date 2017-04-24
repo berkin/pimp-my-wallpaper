@@ -1,5 +1,5 @@
 import React from 'react'
-import FilterLink from '../container/filter-link'
+import FilterLink from '../containers/FilterLink'
 
 const FilterBar = () =>
 	<div>

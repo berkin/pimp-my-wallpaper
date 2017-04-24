@@ -1,4 +1,5 @@
 import React from 'react'
+import { PropTypes } from 'prop-types'
 
 const Link = ({
 	active,
@@ -16,6 +17,12 @@ const Link = ({
 			{children}
 		</button>
 	)
+}
+
+Link.propTypes = {
+	active: PropTypes.bool.isRequired,
+	onClick: PropTypes.func.isRequired,
+	children: PropTypes.node.isRequired,
 }
 
 export default Link
