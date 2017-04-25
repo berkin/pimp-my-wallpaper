@@ -21,7 +21,7 @@ const JobList = ({
 
 JobList.propTypes = {
 	jobs: PropTypes.arrayOf(PropTypes.shape({
-		id: PropTypes.number.isRequired,
+		id: PropTypes.string.isRequired,
 		title: PropTypes.string.isRequired,
 		active: PropTypes.bool.isRequired,
 	}).isRequired).isRequired,

@@ -1,9 +1,8 @@
+import { v4 } from 'node-uuid'
 import * as types from '../constants/actionTypes'
 
-let nextJobId = 0
-
 export const addJob = title => ({
-	id: (nextJobId += 1),
+	id: v4(),
 	type: types.ADD_JOB,
 	title,
 })

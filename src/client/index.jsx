@@ -5,13 +5,20 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { AppContainer } from 'react-hot-loader'
+import { v4 } from 'node-uuid'
 import App from './components/App'
-
-import jobApp from './reducers'
+import appReducers from './reducers'
 
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
 
-const store = createStore(jobApp)
+const persistedState = {
+	jobs: [{
+		id: v4(),
+		title: 'Random',
+		active: true,
+	}]
+}
+const store = createStore(appReducers, persistedState)
 
 const rootEl = document.querySelector(APP_CONTAINER_SELECTOR)
 
