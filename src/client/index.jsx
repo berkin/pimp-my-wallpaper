@@ -14,7 +14,7 @@ import { APP_CONTAINER_SELECTOR } from '../shared/config'
 const persistedState = {
 	jobs: [{
 		id: v4(),
-		title: 'Random',
+		title: 'random',
 		active: true,
 	}]
 }
