@@ -1,10 +1,16 @@
-import jobs from '../src/client/reducer/jobs'
+import jobs from '../src/client/reducers/jobs'
+import { ADD_JOB, TOGGLE_JOB } from '../src/client/actions'
+
+jest.mock('uuid', () => {
+    return {
+        v4: jest.fn(() => 1)
+    };
+});
 
 test('ADD_JOB', () => {
 	const stateBefore = []
 	const action = {
-		id: 0,
-		type: 'ADD_JOB',
+		type: ADD_JOB,
 		title: 'foo',
 	}
 
@@ -26,8 +32,7 @@ test('TOGGLE_JOB', () => {
 	]
 
 	const action = {
-		type: 'TOGGLE_JOB',
-		id: 0,
+		type: TOGGLE_JOB,
 	}
 
 	const stateAfter = [

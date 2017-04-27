@@ -6,14 +6,15 @@ const Job = ({
 	active,
 	onClick,
 }) =>
-	<li
-		role="menuitemcheckbox"
-		aria-checked={active}
-		tabIndex="0"
-		className={active ? 'active' : 'passive'}
-		onClick={onClick}
-	>
-		{title}
+	<li>
+		<a
+			role="button"
+			tabIndex="0"
+			className={active ? 'active' : 'passive'}
+			onClick={onClick}
+		>
+			{title}
+		</a>
 	</li>
 
 Job.propTypes = {

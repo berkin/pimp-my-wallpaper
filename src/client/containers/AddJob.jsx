@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { addJob } from '../actions'
 
@@ -19,6 +20,10 @@ const AddJobComponent = ({ dispatch }) => {
 			</button>
 		</div>
 	)
+}
+
+AddJobComponent.propTypes = {
+	dispatch: PropTypes.func.isRequired,
 }
 
 const AddJob = connect()(AddJobComponent)
