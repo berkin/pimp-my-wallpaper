@@ -4,10 +4,10 @@
     "jquery"
   ],
   "loadEagerly": [
-	'src/**/*.js',
-	'src/**/*.jsx
+	"src/**/*.js",
+    "src/**/*.jsx"
   ],
   "plugins": {
-	'node': {}
+    "node": {}
   }
 }

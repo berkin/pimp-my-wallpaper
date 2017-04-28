@@ -1,11 +1,11 @@
 import jobs from '../src/client/reducers/jobs'
-import { ADD_JOB, TOGGLE_JOB } from '../src/client/actions'
+import { ADD_JOB, TOGGLE_JOB } from '../src/client/constants/actionTypes'
 
-jest.mock('uuid', () => {
-    return {
-        v4: jest.fn(() => 1)
-    };
-});
+jest.mock('node-uuid', () => ({
+	v4: jest.fn(() => 1)
+})
+)
+const id = require('node-uuid').v4()
 
 test('ADD_JOB', () => {
 	const stateBefore = []
@@ -15,7 +15,7 @@ test('ADD_JOB', () => {
 	}
 
 	const stateAfter = [{
-		id: 0,
+		id,
 		title: 'foo',
 		active: true,
 	}]
@@ -25,7 +25,7 @@ test('ADD_JOB', () => {
 test('TOGGLE_JOB', () => {
 	const stateBefore = [
 		{
-			id: 0,
+			id,
 			title: 'foo',
 			active: true,
 		},
@@ -37,7 +37,7 @@ test('TOGGLE_JOB', () => {
 
 	const stateAfter = [
 		{
-			id: 0,
+			id,
 			title: 'foo',
 			active: false,
 		},
