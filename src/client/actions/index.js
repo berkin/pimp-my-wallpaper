@@ -4,15 +4,16 @@ import * as types from '../constants/actionTypes'
 export const addJob = title => ({
 	id: v4(),
 	type: types.ADD_JOB,
-	title,
+	title
 })
 
 export const setVisibilityFilter = filter => ({
 	type: types.SET_VISIBILITY_FILTER,
-	filter,
+	filter
 })
 
 export const toggleJob = jobId => ({
 	type: types.TOGGLE_JOB,
-	id: jobId,
+	id: jobId
 })
+
