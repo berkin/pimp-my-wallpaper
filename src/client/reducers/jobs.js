@@ -6,7 +6,7 @@ const job = (state = {}, action) => {
 		return {
 			id: action.id,
 			title: action.title,
-			active: true,
+			active: true
 		}
 	case TOGGLE_JOB:
 		if (state.id !== action.id) {
@@ -15,7 +15,7 @@ const job = (state = {}, action) => {
 
 		return {
 			...state,
-			active: !state.active,
+			active: !state.active
 		}
 	default:
 		return state
@@ -25,10 +25,7 @@ const job = (state = {}, action) => {
 const jobs = (state = [], action) => {
 	switch (action.type) {
 	case ADD_JOB:
-		return [
-			...state,
-			job(undefined, action),
-		]
+		return [...state, job(undefined, action)]
 	case TOGGLE_JOB:
 		return state.map(item => job(item, action))
 	default:
@@ -37,3 +34,15 @@ const jobs = (state = [], action) => {
 }
 
 export default jobs
+
+export const getVisibleJobList = (state, visibilityFilter) => {
+	switch (visibilityFilter) {
+	case 'SHOW_ACTIVE':
+		return state.filter(item => item.active)
+	case 'SHOW_PASSIVE':
+		return state.filter(item => !item.active)
+	default:
+		return state
+	}
+}
+
