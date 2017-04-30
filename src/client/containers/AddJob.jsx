@@ -9,7 +9,6 @@ const AddJobComponent = ({ dispatch }) => {
 	return (
 		<div>
 			<input type="text" ref={(node) => { input = node }} />
-			<input type="range" multiple value="0,24" />
 			<button
 				onClick={() => {
 					dispatch(addJob(input.value))

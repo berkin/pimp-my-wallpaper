@@ -1,48 +1,50 @@
+import { combineReducers } from 'redux'
 import { ADD_JOB, TOGGLE_JOB } from '../constants/actionTypes'
+import job from './job'
 
-const job = (state = {}, action) => {
+const byId = (state = {}, action) => {
 	switch (action.type) {
 	case ADD_JOB:
-		return {
-			id: action.id,
-			title: action.title,
-			active: true
-		}
 	case TOGGLE_JOB:
-		if (state.id !== action.id) {
-			return state
-		}
-
 		return {
 			...state,
-			active: !state.active
+			[action.id]: job(state[action.id], action)
 		}
 	default:
 		return state
 	}
 }
 
-const jobs = (state = [], action) => {
+const allIds = (state = [], action) => {
 	switch (action.type) {
 	case ADD_JOB:
-		return [...state, job(undefined, action)]
-	case TOGGLE_JOB:
-		return state.map(item => job(item, action))
+		return [
+			...state,
+			action.id
+		]
 	default:
 		return state
 	}
 }
+
+const jobs = combineReducers({
+	byId,
+	allIds,
+})
+
+const getAllJobs = state => state.allIds.map(id => state.byId[id])
 
 export default jobs
 
 export const getVisibleJobList = (state, visibilityFilter) => {
+	const allJobs = getAllJobs(state)
 	switch (visibilityFilter) {
 	case 'SHOW_ACTIVE':
-		return state.filter(item => item.active)
+		return allJobs.filter(item => item.active)
 	case 'SHOW_PASSIVE':
-		return state.filter(item => !item.active)
+		return allJobs.filter(item => !item.active)
 	default:
-		return state
+		return allJobs
 	}
 }
 
