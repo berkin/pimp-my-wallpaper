@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { ADD_JOB, TOGGLE_JOB } from '../constants/actionTypes'
+import { ADD_JOB, TOGGLE_JOB, RECEIVE_JOBS } from '../constants/actionTypes'
 import job from './job'
 
 const byId = (state = {}, action) => {

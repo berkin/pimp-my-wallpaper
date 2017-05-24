@@ -1,6 +1,12 @@
 import { v4 } from 'node-uuid'
 import * as types from '../constants/actionTypes'
 
+export const receiveJobs = (filter, response) => ({
+	type: types.RECEIVE_JOBS,
+	filter,
+	response,
+})
+
 export const addJob = title => ({
 	id: v4(),
 	type: types.ADD_JOB,

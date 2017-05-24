@@ -1,5 +1,6 @@
 import { createStore } from 'redux'
 import appReducers from './reducers'
+import { fetchJobs } from '../api'
 
 const configureStore = () => {
 	const persistedState = {
