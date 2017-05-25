@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import JobList from '../components/JobList'
 import { getVisibleJobList } from '../reducers'
 import * as actions from '../actions'
-import { fetchJobs } from '../../api'
 
 class VisibleJobList extends Component {
 	componentDidMount() {
@@ -17,10 +16,8 @@ class VisibleJobList extends Component {
 	}
 
 	fetchData() {
-		const { filter, receiveJobs } = this.props
-		fetchJobs(filter).then(response =>
-			receiveJobs(filter, response)
-		)
+		const { filter, fetchJobs } = this.props
+		fetchJobs(filter)
 	}
 	render() {
 		const { toggleJob, ...rest } = this.props

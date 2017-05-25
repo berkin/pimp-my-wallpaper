@@ -1,11 +1,18 @@
 import { v4 } from 'node-uuid'
 import * as types from '../constants/actionTypes'
+import * as api from '../../api/'
 
-export const receiveJobs = (filter, response) => ({
+const receiveJobs = (filter, response) => ({
 	type: types.RECEIVE_JOBS,
 	filter,
 	response,
 })
+
+export const fetchJobs = filter =>
+	api.fetchJobs(filter).then(response =>
+		receiveJobs(filter, response)
+	)
+
 
 export const addJob = title => ({
 	id: v4(),
