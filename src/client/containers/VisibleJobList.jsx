@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import JobList from '../components/JobList'
-import { getVisibleJobList } from '../reducers'
+import { getVisibleJobList, getIsFetching } from '../reducers'
 import * as actions from '../actions'
 
 class VisibleJobList extends Component {
@@ -16,21 +16,30 @@ class VisibleJobList extends Component {
 	}
 
 	fetchData() {
-		const { filter, fetchJobs } = this.props
+		const { filter, requestJobs, fetchJobs } = this.props
+		requestJobs(filter)
 		fetchJobs(filter)
 	}
 	render() {
-		const { toggleJob, ...rest } = this.props
+		const { toggleJob, jobs, isFetching } = this.props
+		if (isFetching && jobs.length === 0) {
+			return <p>loading...</p>
+		}
+
 		return (
 			<JobList
+				jobs={jobs}
 				onJobClick={toggleJob}
-				{...rest}
 			/>)
 	}
 }
 
 const mapStateToProps = state => ({
 	jobs: getVisibleJobList(
+		state,
+		state.visibilityFilter,
+	),
+	isFetching: getIsFetching(
 		state,
 		state.visibilityFilter,
 	),

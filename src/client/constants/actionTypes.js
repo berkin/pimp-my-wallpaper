@@ -1,4 +1,5 @@
 export const RECEIVE_JOBS = 'RECEIVE_JOBS'
+export const REQUEST_JOBS = 'REQUEST_JOBS'
 export const ADD_JOB = 'ADD_JOB'
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 export const TOGGLE_JOB = 'TOGGLE_JOB'

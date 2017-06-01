@@ -21,3 +21,5 @@ export const getVisibleJobList = (state, visibilityFilter) => {
 	return ids.map(id => fromById.getJob(state.byId, id))
 }
 
+export const getIsFetching = (state, visibilityFilter) =>
+	fromList.getIsFetching(state.listByFilter[visibilityFilter])

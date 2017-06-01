@@ -11,3 +11,4 @@ const app = combineReducers({
 export default app
 
 export const getVisibleJobList = (state, filter) => fromJobs.getVisibleJobList(state.jobs, filter)
+export const getIsFetching = (state, filter) => fromJobs.getIsFetching(state.jobs, filter)

@@ -8,11 +8,16 @@ const receiveJobs = (filter, response) => ({
 	response,
 })
 
+
 export const fetchJobs = filter =>
 	api.fetchJobs(filter).then(response =>
 		receiveJobs(filter, response)
 	)
 
+export const requestJobs = filter => ({
+	type: types.REQUEST_JOBS,
+	filter,
+})
 
 export const addJob = title => ({
 	id: v4(),
