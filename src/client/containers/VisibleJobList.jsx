@@ -16,8 +16,7 @@ class VisibleJobList extends Component {
 	}
 
 	fetchData() {
-		const { filter, requestJobs, fetchJobs } = this.props
-		requestJobs(filter)
+		const { filter, fetchJobs } = this.props
 		fetchJobs(filter)
 	}
 	render() {
