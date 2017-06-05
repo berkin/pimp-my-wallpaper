@@ -3,26 +3,30 @@ import { getIsFetching } from '../reducers'
 import * as types from '../constants/actionTypes'
 import * as api from '../../api/'
 
-const receiveJobs = (filter, response) => ({
-	type: types.RECEIVE_JOBS,
-	filter,
-	response,
-})
-
-export const requestJobs = filter => ({
-	type: types.REQUEST_JOBS,
-	filter,
-})
-
 export const fetchJobs = filter => (dispatch, getState) => {
 	if (getIsFetching(getState(), filter)) {
 		return Promise.resolve()
 	}
 
-	dispatch(requestJobs(filter))
-	return api.fetchJobs(filter).then(response =>
-		dispatch(receiveJobs(filter, response))
-	)
+	dispatch({
+		type: types.FETCH_JOBS_REQUEST,
+		filter,
+	})
+
+	return api.fetchJobs(filter).then(
+		response =>
+		dispatch({
+			type: types.FETCH_JOBS_SUCCESS,
+			filter,
+			response,
+		}),
+		error =>
+		dispatch({
+			type: types.FETCH_JOBS_FAILURE,
+			filter,
+			message: error.message || 'Something went wrong!'
+		})
+		)
 }
 
 export const addJob = title => ({

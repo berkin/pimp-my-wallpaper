@@ -1,8 +1,8 @@
-import { RECEIVE_JOBS } from '../constants/actionTypes'
+import { FETCH_JOBS_SUCCESS } from '../constants/actionTypes'
 
 const byId = (state = {}, action) => {
 	switch (action.type) {
-	case RECEIVE_JOBS: {
+	case FETCH_JOBS_SUCCESS: {
 		const nextState = { ...state }
 		action.response.forEach((job) => {
 			nextState[job.id] = job

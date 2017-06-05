@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { RECEIVE_JOBS, REQUEST_JOBS } from '../constants/actionTypes'
+import { FETCH_JOBS_SUCCESS, FETCH_JOBS_FAILURE, FETCH_JOBS_REQUEST } from '../constants/actionTypes'
 
 const createList = (filter) => {
 	const ids = (state = [], action) => {
@@ -7,7 +7,7 @@ const createList = (filter) => {
 			return state
 		}
 		switch (action.type) {
-		case RECEIVE_JOBS:
+		case FETCH_JOBS_SUCCESS:
 			return action.response.map(job => job.id)
 		default:
 			return state
@@ -19,9 +19,10 @@ const createList = (filter) => {
 			return state
 		}
 		switch (action.type) {
-		case REQUEST_JOBS:
+		case FETCH_JOBS_REQUEST:
 			return true
-		case RECEIVE_JOBS:
+		case FETCH_JOBS_SUCCESS:
+		case FETCH_JOBS_FAILURE:
 			return false
 		default:
 			return state

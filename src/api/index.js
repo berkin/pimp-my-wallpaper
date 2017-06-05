@@ -13,7 +13,7 @@ const fakeDb = {
 	}]
 }
 
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+const delay = ms => new Promise((resolve, reject) => setTimeout(resolve, ms))
 
 export const fetchJobs = filter =>
 	delay(500).then(() => {
