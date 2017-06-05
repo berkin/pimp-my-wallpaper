@@ -16,7 +16,7 @@ export const requestJobs = filter => ({
 
 export const fetchJobs = filter => (dispatch, getState) => {
 	if (getIsFetching(getState(), filter)) {
-		return
+		return Promise.resolve()
 	}
 
 	dispatch(requestJobs(filter))
