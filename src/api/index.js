@@ -27,3 +27,20 @@ export const fetchJobs = filter =>
 		}
 	})
 
+export const addJob = text =>
+	delay(500).then(() => {
+		const job = {
+			id: v4(),
+			title: text,
+			active: true,
+		}
+		fakeDb.jobs.push(job)
+		return job
+	})
+
+export const toggleJob = id =>
+	delay(500).then(() => {
+		const job = fakeDb.jobs.find(item => id === item.id)
+		job.active = !job.active
+		return job
+	})

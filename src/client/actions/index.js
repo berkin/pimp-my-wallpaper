@@ -1,4 +1,3 @@
-import { v4 } from 'node-uuid'
 import { getIsFetching } from '../reducers'
 import * as types from '../constants/actionTypes'
 import * as api from '../../api/'
@@ -29,19 +28,23 @@ export const fetchJobs = filter => (dispatch, getState) => {
 		)
 }
 
-export const addJob = title => ({
-	id: v4(),
-	type: types.ADD_JOB,
-	title
-})
+export const addJob = title => dispatch =>
+	api.addJob(title).then(response =>
+		dispatch({
+			type: types.ADD_JOB_SUCCESS,
+			response,
+		})
+	)
+
+export const toggleJob = jobId => dispatch =>
+	api.toggleJob(jobId).then(response =>
+		dispatch({
+			type: types.TOGGLE_JOB_SUCCESS,
+			response,
+		})
+	)
 
 export const setVisibilityFilter = filter => ({
 	type: types.SET_VISIBILITY_FILTER,
 	filter
 })
-
-export const toggleJob = jobId => ({
-	type: types.TOGGLE_JOB,
-	id: jobId
-})
-

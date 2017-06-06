@@ -1,4 +1,4 @@
-import { FETCH_JOBS_SUCCESS } from '../constants/actionTypes'
+import { FETCH_JOBS_SUCCESS, ADD_JOB_SUCCESS } from '../constants/actionTypes'
 
 const byId = (state = {}, action) => {
 	switch (action.type) {
@@ -8,6 +8,12 @@ const byId = (state = {}, action) => {
 			nextState[job.id] = job
 		})
 		return nextState
+	}
+	case ADD_JOB_SUCCESS: {
+		return {
+			...state,
+			[action.response.id]: action.response
+		}
 	}
 	default:
 		return state
