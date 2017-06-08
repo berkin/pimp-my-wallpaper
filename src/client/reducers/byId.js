@@ -1,23 +1,13 @@
-import { FETCH_JOBS_SUCCESS, ADD_JOB_SUCCESS } from '../constants/actionTypes'
 
 const byId = (state = {}, action) => {
-	switch (action.type) {
-	case FETCH_JOBS_SUCCESS: {
-		const nextState = { ...state }
-		action.response.forEach((job) => {
-			nextState[job.id] = job
-		})
-		return nextState
-	}
-	case ADD_JOB_SUCCESS: {
+	if (action.response) {
 		return {
 			...state,
-			[action.response.id]: action.response
+			...action.response.entities.jobs,
 		}
 	}
-	default:
-		return state
-	}
+
+	return state
 }
 
 export default byId

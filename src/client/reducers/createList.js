@@ -6,11 +6,11 @@ const createList = (filter) => {
 		switch (action.type) {
 		case FETCH_JOBS_SUCCESS:
 			return action.filter === filter ?
-				action.response.map(job => job.id) :
+				action.response.result :
 				state
 		case ADD_JOB_SUCCESS:
 			return filter !== 'SHOW_PASSIVE' ?
-				[...state, action.response.id] :
+				[...state, action.response.result] :
 				state
 		default:
 			return state
