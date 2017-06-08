@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { ADD_JOB_SUCCESS, FETCH_JOBS_SUCCESS, FETCH_JOBS_FAILURE, FETCH_JOBS_REQUEST } from '../constants/actionTypes'
+import { ADD_JOB_SUCCESS, TOGGLE_JOB_SUCCESS, FETCH_JOBS_SUCCESS, FETCH_JOBS_FAILURE, FETCH_JOBS_REQUEST } from '../constants/actionTypes'
 
 const createList = (filter) => {
 	const ids = (state = [], action) => {
@@ -12,6 +12,18 @@ const createList = (filter) => {
 			return filter !== 'SHOW_PASSIVE' ?
 				[...state, action.response.result] :
 				state
+		case TOGGLE_JOB_SUCCESS: {
+			const { result: toggleId, entities } = action.response
+			const active = entities.jobs[toggleId].active
+
+			const shouldRemove =
+				(active && filter === 'SHOW_PASSIVE') ||
+				(!active && filter === 'SHOW_ACTIVE')
+
+			return shouldRemove ?
+				state.filter(id => id !== toggleId) :
+				state
+		}
 		default:
 			return state
 		}

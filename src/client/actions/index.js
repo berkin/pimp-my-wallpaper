@@ -43,7 +43,7 @@ export const toggleJob = jobId => dispatch =>
 	api.toggleJob(jobId).then(response =>
 		dispatch({
 			type: types.TOGGLE_JOB_SUCCESS,
-			response,
+			response: normalize(response, schema.job),
 		})
 	)
 
