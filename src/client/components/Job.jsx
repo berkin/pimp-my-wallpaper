@@ -1,4 +1,5 @@
 import React from 'react'
+import TimePicker from './TimePicker'
 import { PropTypes } from 'prop-types'
 
 const Job = ({
@@ -15,6 +16,8 @@ const Job = ({
 		>
 			{title}
 		</a>
+		<TimePicker />
+		<TimePicker />
 	</li>
 
 Job.propTypes = {
