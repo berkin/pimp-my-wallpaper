@@ -11,7 +11,7 @@ const range = (max) => {
 	return numbers
 }
 
-const TimePicker = (props) => (
+const TimePicker = props => (
 	<div style={{ display: 'inline-block' }}>
 		<select aria-labelledby={props.id}>
 			{ range(12).map(i => <Option key={i.toString()} value={i} />) }
