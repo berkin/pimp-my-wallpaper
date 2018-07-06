@@ -2,23 +2,17 @@ import React from 'react'
 import TimePicker from './TimePicker'
 import { PropTypes } from 'prop-types'
 
-const Job = ({
-	title,
-	active,
-	onClick,
-}) =>
+const Job = ({ title, active, onClick }) => (
 	<li>
 		<a
 			role="button"
 			tabIndex="0"
 			className={active ? 'active' : 'passive'}
-			onClick={onClick}
-		>
+			onClick={onClick}>
 			{title}
 		</a>
-		<TimePicker />
-		<TimePicker />
 	</li>
+)
 
 Job.propTypes = {
 	onClick: PropTypes.func.isRequired,

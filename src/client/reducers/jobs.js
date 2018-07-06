@@ -13,7 +13,6 @@ const jobs = combineReducers({
 	listByFilter,
 })
 
-
 export default jobs
 
 export const getVisibleJobList = (state, visibilityFilter) => {
